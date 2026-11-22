@@ -1,0 +1,12 @@
+# Release build artifacts
+dist/
+*.tar.gz
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
