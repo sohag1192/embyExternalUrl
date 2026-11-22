@@ -1,0 +1,87 @@
+name: Upstream Sync & Auto-Update
+
+on:
+  schedule:
+    # Runs daily at 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_sync:
+        description: 'Force overwrite local branch with upstream'
+        type: boolean
+        default: false
+      trigger_release:
+        description: 'Trigger release workflow if updates are detected'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    name: Sync with Upstream
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add and fetch upstream
+        run: |
+          git remote add upstream https://github.com/bpking1/embyExternalUrl.git
+          git fetch upstream --tags
+
+      - name: Sync branches and tags
+        id: sync_step
+        run: |
+          git checkout main
+
+          UPSTREAM_COMMITS=$(git rev-list --count HEAD..upstream/main || echo 0)
+          echo "Commits behind upstream: $UPSTREAM_COMMITS"
+
+          if [ "${{ github.event.inputs.force_sync }}" = "true" ]; then
+            echo "Force sync requested. Resetting main to upstream/main..."
+            git reset --hard upstream/main
+            git push origin main --force
+            git push origin --tags
+            echo "has_updates=true" >> "$GITHUB_OUTPUT"
+            echo "commit_count=$UPSTREAM_COMMITS" >> "$GITHUB_OUTPUT"
+          elif [ "$UPSTREAM_COMMITS" -gt 0 ]; then
+            echo "Merging $UPSTREAM_COMMITS new commits from upstream..."
+            git merge upstream/main -m "chore(sync): sync upstream changes" --no-edit || {
+              echo "Merge failed, aborting merge..."
+              git merge --abort
+              exit 1
+            }
+            git push origin main
+            git push origin --tags
+            echo "has_updates=true" >> "$GITHUB_OUTPUT"
+            echo "commit_count=$UPSTREAM_COMMITS" >> "$GITHUB_OUTPUT"
+          else
+            echo "Repository is already up to date with upstream."
+            # Push any upstream tags that might not be on origin yet
+            git push origin --tags || true
+            echo "has_updates=false" >> "$GITHUB_OUTPUT"
+            echo "commit_count=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Dispatch Release Workflow
+        if: |
+          (steps.sync_step.outputs.has_updates == 'true' && (github.event.inputs.trigger_release != 'false')) ||
+          (github.event.inputs.trigger_release == 'true')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Triggering Auto Release workflow..."
+          gh workflow run auto-release.yml \
+            -f reason="Automated sync from upstream with ${{ steps.sync_step.outputs.commit_count }} new commit(s)" || \
+            echo "Auto release will also run via workflow_run hook."

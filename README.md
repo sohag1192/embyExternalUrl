@@ -9,6 +9,9 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/sohag1192/embyExternalUrl/releases"><img src="https://img.shields.io/github/v/release/sohag1192/embyExternalUrl?color=blue&label=Release" alt="Latest Release" /></a>
+  <a href="https://github.com/sohag1192/embyExternalUrl/actions/workflows/sync-upstream.yml"><img src="https://img.shields.io/github/actions/workflow/status/sohag1192/embyExternalUrl/sync-upstream.yml?branch=main&label=Upstream%20Sync" alt="Upstream Sync" /></a>
+  <a href="https://github.com/sohag1192/embyExternalUrl/actions/workflows/auto-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/sohag1192/embyExternalUrl/auto-release.yml?label=Auto%20Release" alt="Auto Release" /></a>
   <a href="https://github.com/sohag1192/embyExternalUrl/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
   <img src="https://img.shields.io/badge/Nginx-NJS%20Enabled-009639?logo=nginx&logoColor=white" alt="Nginx NJS" />
   <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" alt="Docker" />
@@ -45,6 +48,24 @@
 | **`embyAddExternalUrl`** | Nginx NJS Server Filter | Injects external player launch links into Emby metadata API responses for all official clients | [Read Guide](./embyAddExternalUrl/README.md) |
 | **`embyWebAddExternalUrl`** | UserScript / Server Injected | Adds customizable external player buttons with official player icons to Emby & Jellyfin Web | [Read Guide](./embyWebAddExternalUrl/README.md) |
 | **`alistWebAddExternalUrl`** | UserScript / Custom Header | Adds external player launch buttons to the AList Web interface | [Read Guide](./alistWebAddExternalUrl/README.md) |
+
+---
+
+## 📦 Releases & Automated Packages
+
+Pre-built, ready-to-deploy archives and checksums are automatically packaged and published to **[GitHub Releases](https://github.com/sohag1192/embyExternalUrl/releases)**:
+
+| Package Archive | Recommended For | Direct Download Command |
+| :--- | :--- | :--- |
+| **`emby2Alist.tar.gz`** | Emby / Jellyfin cloud direct-link redirection | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/emby2Alist.tar.gz` |
+| **`addExternalUrl.tar.gz`** | Standalone Emby / Jellyfin external player button | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/addExternalUrl.tar.gz` |
+| **`plex2Alist.tar.gz`** | Plex media server cloud direct-link redirection | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/plex2Alist.tar.gz` |
+| **`embyWebAddExternalUrl.zip`** | Web dashboard player scripts & custom player icons | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/embyWebAddExternalUrl.zip` |
+| **`alistWebAddExternalUrl.zip`** | AList Web interface external player integration | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/alistWebAddExternalUrl.zip` |
+
+> 🔄 **Automated Sync & CI/CD**:
+> - **Daily Upstream Sync**: Automatically tracks upstream changes from [`bpking1/embyExternalUrl`](https://github.com/bpking1/embyExternalUrl) every day at 02:00 UTC.
+> - **Automated Release**: Automatically compiles and updates release packages, generates release notes, and computes SHA-256 integrity checksums.
 
 ---
 

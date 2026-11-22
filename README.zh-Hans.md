@@ -9,6 +9,9 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/sohag1192/embyExternalUrl/releases"><img src="https://img.shields.io/github/v/release/sohag1192/embyExternalUrl?color=blue&label=Release" alt="Latest Release" /></a>
+  <a href="https://github.com/sohag1192/embyExternalUrl/actions/workflows/sync-upstream.yml"><img src="https://img.shields.io/github/actions/workflow/status/sohag1192/embyExternalUrl/sync-upstream.yml?branch=main&label=Upstream%20Sync" alt="Upstream Sync" /></a>
+  <a href="https://github.com/sohag1192/embyExternalUrl/actions/workflows/auto-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/sohag1192/embyExternalUrl/auto-release.yml?label=Auto%20Release" alt="Auto Release" /></a>
   <a href="https://github.com/sohag1192/embyExternalUrl/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
   <img src="https://img.shields.io/badge/Nginx-NJS%20Enabled-009639?logo=nginx&logoColor=white" alt="Nginx NJS" />
   <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" alt="Docker" />
@@ -45,6 +48,24 @@
 | **`embyAddExternalUrl`** | Nginx NJS 服务端过滤 | 拦截 Emby 元数据 API，在所有官方客户端详情页注入外部播放器按钮 | [查看文档](./embyAddExternalUrl/README.zh-Hans.md) |
 | **`embyWebAddExternalUrl`** | 用户脚本 / 服务端注入 | 为 Emby & Jellyfin Web 端注入带精美播放器图标的调用按钮 | [查看文档](./embyWebAddExternalUrl/README.zh-Hans.md) |
 | **`alistWebAddExternalUrl`** | 用户脚本 / 全局标头 | 为 AList Web 网页端添加外部播放器调用按钮 | [查看文档](./alistWebAddExternalUrl/README.zh-Hans.md) |
+
+---
+
+## 📦 发布版本与自动更新 (Releases)
+
+编译好的开箱即用归档包与校验码会自动打包并发布至 **[GitHub Releases](https://github.com/sohag1192/embyExternalUrl/releases)**:
+
+| 归档安装包 | 适用场景 | 快速下载命令 |
+| :--- | :--- | :--- |
+| **`emby2Alist.tar.gz`** | Emby / Jellyfin 网盘直链重定向 | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/emby2Alist.tar.gz` |
+| **`addExternalUrl.tar.gz`** | 独立 Emby / Jellyfin 外部播放器调用 | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/addExternalUrl.tar.gz` |
+| **`plex2Alist.tar.gz`** | Plex 网盘直链重定向 | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/plex2Alist.tar.gz` |
+| **`embyWebAddExternalUrl.zip`** | Web 网页端播放脚本与播放器图标包 | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/embyWebAddExternalUrl.zip` |
+| **`alistWebAddExternalUrl.zip`** | AList Web 网页端外部播放器插件 | `wget https://github.com/sohag1192/embyExternalUrl/releases/latest/download/alistWebAddExternalUrl.zip` |
+
+> 🔄 **自动化同步与 CI/CD**:
+> - **每日上游自动同步**: 每天 UTC 02:00 自动拉取并合并上游 [`bpking1/embyExternalUrl`](https://github.com/bpking1/embyExternalUrl) 的最新特性与修复。
+> - **自动化发布 (Auto Release)**: 自动打包各模块部署包、生成更新日志并输出 SHA-256 完整性校验文件。
 
 ---
 
