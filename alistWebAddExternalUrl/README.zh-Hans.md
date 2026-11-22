@@ -20,10 +20,10 @@ const removeCustomBtns = false;
 效果:
 
 AList V3
-![](https://emby-external-url.7o7o.cc/alistWebAddExternalUrl/preview/preview01.png)
+![](./preview/preview01.png)
 
 AList V2
-![](https://emby-external-url.7o7o.cc/alistWebAddExternalUrl/preview/preview02.png)
+![](./preview/preview02.png)
 
 一. 浏览器单独使用方法
 

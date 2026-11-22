@@ -22,10 +22,10 @@ const removeCustomBtns = false;      // Remove redundant custom toggles
 ## 🖼️ Visual Preview
 
 - **AList V3**  
-  ![Preview V3](https://emby-external-url.7o7o.cc/alistWebAddExternalUrl/preview/preview01.png)
+  ![Preview V3](./preview/preview01.png)
 
 - **AList V2**  
-  ![Preview V2](https://emby-external-url.7o7o.cc/alistWebAddExternalUrl/preview/preview02.png)
+  ![Preview V2](./preview/preview02.png)
 
 ---
 

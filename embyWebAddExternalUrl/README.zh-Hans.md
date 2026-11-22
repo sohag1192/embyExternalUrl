@@ -62,13 +62,35 @@ const iconConfig = {
 const useRealFileName = false;
 ```
 
+### 支持播放器及对应图标
+
+| 图标 | 播放器 | 协议 Scheme | 支持平台 | 说明 |
+| :---: | :--- | :--- | :--- | :--- |
+| <img src="./icons/icon-PotPlayer.webp" width="24" height="24" alt="PotPlayer" /> | **PotPlayer** | `potplayer://` | Windows | 支持自动外挂字幕与多开实例 |
+| <img src="./icons/icon-MPV.webp" width="24" height="24" alt="MPV" /> | **MPV** | `mpv://` / `mpvplay://` | Windows, macOS, Linux | 需配合 [mpv-handler](https://github.com/akiirui/mpv-handler) 注册协议 |
+| <img src="./icons/icon-VLC.webp" width="24" height="24" alt="VLC" /> | **VLC** | `vlc://` | 跨平台 | 全能格式播放器 |
+| <img src="./icons/icon-IINA.webp" width="24" height="24" alt="IINA" /> | **IINA** | `iina://` | macOS | macOS 原生高级播放器 |
+| <img src="./icons/icon-infuse.webp" width="24" height="24" alt="Infuse" /> | **Infuse** | `infuse://` | iOS, iPadOS, macOS, tvOS | 苹果全生态影音播放器 |
+| <img src="./icons/icon-MXPlayer.webp" width="24" height="24" alt="MX Player" /> | **MX Player** | `intent://` | Android | 安卓经典硬件解码播放器 |
+| <img src="./icons/icon-MXPlayerPro.webp" width="24" height="24" alt="MX Player Pro" /> | **MX Player Pro** | `intent://` | Android | 无广告专业版 |
+| <img src="./icons/icon-NPlayer.webp" width="24" height="24" alt="nPlayer" /> | **nPlayer** | `nplayer-http://` | iOS, Android | 支持 DTS/Dolby 音效认证 |
+| <img src="./icons/icon-DDPlay.webp" width="24" height="24" alt="DanDanPlay" /> | **弹弹Play** | `ddplay://` | Windows, Android | 支持动画弹幕加载与同步 |
+| <img src="./icons/icon-StellarPlayer.webp" width="24" height="24" alt="恒星播放器" /> | **恒星播放器** | `stellar://` | Windows, macOS | 支持 HDR 与插帧增强 |
+| <img src="./icons/icon-OmniPlayer.webp" width="24" height="24" alt="OmniPlayer" /> | **OmniPlayer** | `omniplayer://` | macOS | Mac 平台多功能播放器 |
+| <img src="./icons/icon-FigPlayer.webp" width="24" height="24" alt="FigPlayer" /> | **FigPlayer** | `figplayer://` | macOS | 轻量 Mac 媒体播放器 |
+| <img src="./icons/icon-Fileball.webp" width="24" height="24" alt="Fileball" /> | **Fileball** | `fileball://` | iOS | iOS 文件管理与影音播放器 |
+| <img src="./icons/icon-SenPlayer.webp" width="24" height="24" alt="SenPlayer" /> | **SenPlayer** | `senplayer://` | iOS, tvOS | 极简串流播放器 |
+| <img src="./icons/icon-Copy.webp" width="24" height="24" alt="Copy URL" /> | **复制串流链接** | 剪贴板 API | 全平台 | 直接复制原串流直链地址 |
+
+---
+
 效果:
 
 Emby Web, iconOnly: false
-![image](https://emby-external-url.7o7o.cc/embyWebAddExternalUrl/preview/preview01.png)
+![image](./preview/preview01.png)
 
 Emby Web, iconOnly: true
-![image](https://emby-external-url.7o7o.cc/embyWebAddExternalUrl/preview/preview02.png)
+![image](./preview/preview02.png)
 
 ### CHANGELOG
 
